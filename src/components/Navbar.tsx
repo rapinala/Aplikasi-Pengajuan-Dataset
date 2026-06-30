@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Bell, User, LogOut, Database } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface NavbarProps {
   userRole: 'instansi' | 'walidata' | 'admin'
@@ -11,8 +12,10 @@ interface NavbarProps {
 }
 
 export function Navbar({ userRole, userName, userId }: NavbarProps) {
+  const router = useRouter()
   const [notifications, setNotifications] = useState<any[]>([])
   const [showNotifications, setShowNotifications] = useState(false)
+  const [showUserMenu, setShowUserMenu] = useState(false)
 
   useEffect(() => {
     fetch(`/api/notifications?userId=${userId}`)
@@ -22,6 +25,15 @@ export function Navbar({ userRole, userName, userId }: NavbarProps) {
   }, [userId])
 
   const unreadCount = notifications.filter(n => !n.isRead).length
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' })
+      router.push('/login')
+    } catch (error) {
+      console.error('Logout error:', error)
+    }
+  }
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -78,12 +90,31 @@ export function Navbar({ userRole, userName, userId }: NavbarProps) {
               )}
             </div>
             
-            <div className="flex items-center space-x-2">
-              <User className="h-5 w-5 text-gray-600" />
-              <div className="text-sm">
-                <p className="font-medium text-gray-900">{userName}</p>
-                <p className="text-xs text-gray-500 capitalize">{userRole}</p>
-              </div>
+            <div className="relative">
+              <button
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                className="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-lg"
+              >
+                <User className="h-5 w-5 text-gray-600" />
+                <div className="text-sm">
+                  <p className="font-medium text-gray-900">{userName}</p>
+                  <p className="text-xs text-gray-500 capitalize">{userRole}</p>
+                </div>
+              </button>
+
+              {showUserMenu && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200">
+                  <div className="p-2">
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md flex items-center gap-2"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

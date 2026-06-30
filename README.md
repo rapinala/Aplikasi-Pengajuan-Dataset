@@ -212,9 +212,13 @@ Dokumentasi lengkap sistem dengan penjelasan fitur
 - Penilaian kualitas data
 - Analytics & recommendations
 
-## 🔐 Demo Credentials
+## 🔐 Login & Authentication
 
-Setelah seeding:
+**Sistem login sudah tersedia!** ✅
+
+### Demo Credentials
+
+Setelah seeding, akses `/login` dan gunakan:
 
 **Instansi:**
 - Email: `budi@dinkes.go.id`
@@ -224,7 +228,18 @@ Setelah seeding:
 - Email: `walidata@kominfo.go.id`
 - Password: `password123`
 
-⚠️ **Note**: Ini adalah demo credentials. Dalam production, gunakan sistem autentikasi yang proper dengan password hashing!
+💡 **Tip:** Di halaman login, klik tombol "👤 Instansi" atau "👨‍💼 Walidata" untuk auto-fill credentials!
+
+### Fitur Login
+✅ JWT-based authentication  
+✅ Password hashing dengan bcrypt  
+✅ Session management (7 days)  
+✅ Route protection middleware  
+✅ Role-based access control  
+✅ Register page untuk user baru  
+✅ Logout functionality  
+
+**Panduan lengkap:** [LOGIN_GUIDE.md](./LOGIN_GUIDE.md)
 
 ## 📖 Dokumentasi Lengkap
 

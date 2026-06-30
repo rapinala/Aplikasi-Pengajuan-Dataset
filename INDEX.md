@@ -9,8 +9,9 @@ Selamat datang! Ini adalah index lengkap untuk semua dokumentasi sistem Dashboar
 **Baru pertama kali? Mulai dengan:**
 
 1. **[README.md](./README.md)** - Overview sistem & quick start (5 menit)
-2. **[QUICK_START.md](./QUICK_START.md)** - Setup development & demo walkthrough
-3. **[INSTALL_SERVER.md](./INSTALL_SERVER.md)** - 3 cara termudah install ke server ⭐
+2. **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)** - 🎯 Cheat sheet & quick commands ⭐
+3. **[QUICK_START.md](./QUICK_START.md)** - Setup development & demo walkthrough
+4. **[INSTALL_SERVER.md](./INSTALL_SERVER.md)** - 3 cara termudah install ke server
 
 ---
 
@@ -20,6 +21,7 @@ Selamat datang! Ini adalah index lengkap untuk semua dokumentasi sistem Dashboar
 
 | Dokumen | Deskripsi | Target Audience |
 |---------|-----------|-----------------|
+| **[LOGIN_GUIDE.md](./LOGIN_GUIDE.md)** | 🔐 Panduan login & autentikasi | User, Admin |
 | **[EXECUTIVE_SUMMARY.md](./EXECUTIVE_SUMMARY.md)** | Ringkasan eksekutif, ROI, KPI | Pimpinan, Stakeholder |
 | **[DOCUMENTATION.md](./DOCUMENTATION.md)** | Dokumentasi lengkap sistem, fitur, alur kerja | Instansi, Walidata, Pimpinan |
 | **[VIDEO_TUTORIAL.md](./VIDEO_TUTORIAL.md)** | Panduan membuat video tutorial | Tim Training |

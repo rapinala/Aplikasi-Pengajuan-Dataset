@@ -9,6 +9,7 @@ import {
   activityLogs,
   dataQualityMetrics
 } from '../src/db/schema'
+import bcrypt from 'bcryptjs'
 
 async function seed() {
   console.log('🌱 Seeding database...')
@@ -63,31 +64,33 @@ async function seed() {
 
     // Seed Users
     console.log('Creating users...')
+    const hashedPassword = await bcrypt.hash('password123', 10)
+    
     const userData = await db.insert(users).values([
       {
         email: 'budi@dinkes.go.id',
         name: 'Budi Santoso',
-        password: 'password123', // In production, hash this!
+        password: hashedPassword,
         role: 'instansi',
         instansiId: instansiData[0].id,
       },
       {
         email: 'siti@dindik.go.id',
         name: 'Siti Rahayu',
-        password: 'password123',
+        password: hashedPassword,
         role: 'instansi',
         instansiId: instansiData[1].id,
       },
       {
         email: 'walidata@kominfo.go.id',
         name: 'Dr. Ahmad Walidata',
-        password: 'password123',
+        password: hashedPassword,
         role: 'walidata',
       },
       {
         email: 'validator@bappeda.go.id',
         name: 'Dr. Siti Nurhaliza',
-        password: 'password123',
+        password: hashedPassword,
         role: 'walidata',
       },
     ]).returning()
